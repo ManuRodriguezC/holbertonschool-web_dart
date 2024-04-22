@@ -1,0 +1,29 @@
+import 'dart:convert';
+
+import '3-util.dart';
+
+Future<String> greetUser() async {
+  try {
+    String user = await fetchUserData();
+    Map<String, dynamic> userData = jsonDecode(user);
+    print('Hello ${userData['username']}');
+  } catch (err) {
+    return 'error caught: $err';
+  }
+
+  return "";
+}
+
+Future<String> loginUser() async {
+  try {
+    bool stateUser = await checkCredentials();
+    print('There is a user: $stateUser');
+    if (stateUser) {
+      return await greetUser();
+    } else {
+      return 'Wrong credentials';
+    }
+  } catch (error) {
+    return 'error caught: $error';
+  }
+}
