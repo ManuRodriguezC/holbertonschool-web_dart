@@ -6,12 +6,10 @@ Future<String> greetUser() async {
   try {
     String user = await fetchUserData();
     Map<String, dynamic> userData = jsonDecode(user);
-    print('Hello ${userData['username']}');
+    return 'Hello ${userData['username']}';
   } catch (err) {
     return 'error caught: $err';
   }
-
-  return "";
 }
 
 Future<String> loginUser() async {
