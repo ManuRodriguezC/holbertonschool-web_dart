@@ -1,4 +1,4 @@
-import '4-mutables.dart';
+import '6-password.dart';
 
 class User extends Password {
   int? id;
